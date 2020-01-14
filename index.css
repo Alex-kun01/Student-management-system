@@ -1,0 +1,535 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html,body{
+    font-size: 14px;
+    font-family: 'YouYuan';
+    width: 100%;
+    height: 100%;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+input,button{
+    border: none;
+    background: none;
+    outline: none;
+}
+
+
+
+/*
+头部样式
+*/
+.header{
+    /* width: 100%;
+    height: 70px;
+    line-height: 70px;
+    background-color:#0d9196; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+    background: linear-gradient(90deg,#008c8c,#0d9196,#6dc5c9);
+    padding-left: 3rem;
+    box-sizing: border-box;
+}
+.header::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url() repeat center;
+}
+.header .logo{
+    /* width: 200px;
+    padding-left: 20px;
+    display: inline-block; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.header .logo img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5px;
+}
+.header .logo span{
+    color: #e3eceb;
+    margin-left: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 4px 2px 6px #000;
+    animation: jumping 0.8s infinite alternate;
+}
+
+.header .logo .jia{
+    animation-delay: 0s;
+}
+.header .logo .zhou{
+    animation-delay: 0.25s;
+}
+.header .logo .li{
+    animation-delay: 0.5s;
+}
+.header .logo .gong{
+    animation-delay: 0.75s;
+}
+
+
+@keyframes jumping{
+    0%{
+        transform: translateY(0);
+        text-shadow: 4px 0px 6px #000;
+    }
+    100%{
+        transform: translateY(-20px);
+        text-shadow: 4px 6px 6px #000;
+    }
+}
+
+.header .btn{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    padding:5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+.header .btn span{
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    margin: 4px 0;
+}
+.header .btn:hover{
+    transform: translateY(-50%) scale(1.1);
+    transition: 0.3s ease-in-out;
+}
+.header .btn:hover span{
+    animation: change 2s infinite ease-in-out;
+}
+@keyframes change{
+    0%{
+        transform: rotate(0);
+    }
+    25%{
+        transform: rotate(45deg);
+    }
+    50%{
+        transform: rotate(0);
+    }
+    75%{
+        transform: rotate(-45deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}
+
+.header .set{
+    display: inline-block;
+    position: absolute;
+    right: 28px;
+    top: 0px;
+    
+}
+.header .set img{
+    width: 25px;
+    height: 25px;
+}
+.header .drop-list{
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    padding: 30px;
+    box-sizing: border-box;
+    background: linear-gradient(90deg,#008c8c,#0d9196,#6dc5c9);
+    text-align: center;
+    z-index: 999;
+}
+.header .drop-list ul li{
+    display: block;
+    cursor: pointer;
+    color: #000;
+    line-height: 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.header .drop-list ul li:hover{
+    background: #6dc5c9;
+    transition: 0.5s;
+}
+@media all and (max-width:768px){
+    .header .btn{
+        display: block;
+    }
+    .header .logo{
+        transform: translateX(200px);
+    }
+    .left-menu{
+        display: none;
+    }
+    /* .right-content{
+        margin-top: 180px;
+    } */
+}
+@media all and (min-width:768px){
+    .right-content{
+        padding-left: 200px;
+    }
+}
+
+
+/*
+左侧菜单栏样式
+*/
+.left-menu{
+    position: fixed;
+    width: 200px;
+    min-height: calc(100vh - 4.5rem);
+    top: 4.5rem;
+    left: 0;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
+    background: linear-gradient(#008c8c,#0d9196,#6dc5c9);
+}
+.left-menu dl{
+    line-height: 40px;
+    font-size: 1.1rem;
+    color: #000000;
+    font-weight: bold;
+}
+.left-menu dl dt{
+    padding-left: 8px;
+    font-weight: bold;
+}
+.left-menu dl dd{
+    padding-left: 30px;
+    cursor: pointer;
+}
+/*active选中的菜单样式*/
+.left-menu dl dd.active{
+    background-color: #12b0b6;
+    border-radius: 18px 0 0 18px;
+    color: #e3eceb;
+    transition: all 0.3s ease-in-out;
+}
+.left-menu dl dd:hover{
+    background-color: #039ea3;
+    border-radius: 18px 0 0 18px;
+    color: e3eceb;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+/*
+右侧内容区域样式
+*/
+/*搜索栏*/
+.right-content .search-menu .an{
+    font-size: 1rem;
+    color: #0d9196;
+}
+.right-content .search-menu select{
+    border: 1px solid #0d9196;
+    border-radius: 5px;
+    color: #0d9196;
+    text-align: center;
+    text-indent: 1px;
+    width: 40px;
+}
+.right-content .search-menu{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 30px;
+    background-color: #ecf8f6;
+    padding-bottom: 4px;
+}
+.right-content .search-menu input{
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+    text-indent: 5px;
+    outline: none;
+    background-color: #86d7da;
+    color: #757272;
+}
+.right-content .search-menu button{
+    width: 50px;
+    height: 20px;
+    border: none;
+    background-color: #0d9196;
+    color: #e3eceb;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+.right-content .student-list .search-menu .pageNumber2{
+    display: inline-block;
+    height: 32px;
+    float: right;
+    margin-right: 10px;
+    /* border: 1px solid red; */
+}
+.right-content .student-list .search-menu .pageNumber{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+.right-content .student-list .search-menu .pageNumber span{
+    font-size: 1rem;
+    color: #0d9196;
+}
+.right-content .student-list .search-menu .pageNumber input{
+    width: 30px;
+}
+.right-content .search-menu button:hover{
+    background-color: #12b0b6;
+}
+.right-content .search-menu .search-page{
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
+}
+.right-content .search-menu .search-page span{
+    font-size: 1rem;
+    color: #0d9196;
+}
+.right-content .search-menu .search-page .showsize{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    border: 1px solid #0d9196;
+    border-radius: 3px;
+}
+.right-content{
+    /* float: right;
+    background-color: rgba(236, 243, 226, 0.959);
+    width: calc(100% - 200px);
+    height: calc(100% - 70px); */
+    min-width: 990px;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+    /* padding-left: 200px; */
+    padding-top: 4.5rem;
+    box-sizing: border-box;
+}
+.student-echarts{
+   display: flex;
+   align-items: center;
+}
+.right-content .area,
+.right-content .mySex{
+    width: 30vw;
+    height: 30vh;
+    border: 1px solid #008c8c;
+    margin: 50px;
+    float: left;
+    border-radius: 8px;
+}
+
+/*学生列表隐藏*/
+.student-list{
+    display: none;
+}
+
+.student-list table{
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+}
+/*给表格的头部添加样式*/
+#student-list table thead{
+    background-color :#76b6b9;
+    color: #ffffff;
+    font-size: 14px;
+    height: 30px;
+}
+/*给表格的身体添加样式*/
+#student-list table tbody{
+    background-color: #cad7d8;
+    font-size:0.9rem; 
+}
+#student-list table tbody td:hover{
+    background-color: #d5e0e2;
+    color: #0d9196;
+}
+
+
+/*给编辑，删除按钮添加样式*/
+#student-list table .btn{
+    padding: 3px 12px;
+    margin-left: 10px;
+    color: #fff;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+#student-list table .btn.edit{
+    background-color: #0d9196;
+}
+#student-list table .btn.delete{
+    background-color: rgb(252, 77, 164);
+}
+#student-list table .btn.edit:hover{
+    background-color: #12b0b6;
+}
+#student-list table .btn.delete:hover{
+    background-color: rgb(255, 113, 184);
+}
+#student-list .modal .content input{
+    text-indent: 2px;
+    border: 1px solid #0d9196;
+    border-radius: 4px;
+    height: 16px;
+}
+#student-list .modal .content #testbtn{
+    height: 25px;
+    line-height: 1px;
+}
+#student-list .modal span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+#student-list .modal span:hover{
+    background-color: #cad7d8;
+    border-radius: 8px;
+}
+#student-list .modal span img{
+    width: 18px;
+    height: 18px;
+}
+
+/*新增学生页样式*/
+
+/*隐藏新增学生页面*/
+.right-content .student-add {
+    display: none;
+}
+.right-content .student-echarts{
+    display: none;
+}
+.student-add form{
+   width: 40vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-items: center;
+}
+form .item {
+    margin: 10px 0 ;
+    /* margin-left: 20px; */
+
+}
+/*选中form下面的所有item不包括 带有sex属性的lable标签*/
+form .item label:not(.sex){
+    width: 100px;
+    text-align: right;
+    display: inline-block;
+}
+form .item label.sex{
+    cursor: pointer;
+}
+ .student-add .item .btn{
+    padding: 5px 25px;
+    border: none;
+    outline: none;
+    background-color: #0d9196;
+    border-radius: 8px;
+    color: #e3eceb;
+}
+.student-add .item #sutdent-add-succession{
+    padding: 5px 8px;
+}
+.right-content .student-add .ipt-add{
+    width: 230px;
+}
+/*  将right-content 下有content-active类名的元素隐藏掉  */
+.right-content .content-active {
+    display: block;
+}
+/*将编辑学生信息页面隐藏掉*/
+.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/*定义一个遮罩层*/
+.mask{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+/*编辑学生信息的页面样式*/
+.modal .content{
+    background-color: #6dc5c9;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -225px;
+    margin-left: -250px; 
+    width: 500px;
+    height: 450px;
+    border-radius: 15px;
+}
+.content h3 {
+    padding: 16px 30px;
+}
+.modal form {
+    width: 400px;
+    margin: 0px auto;
+}
+.modal form .btn {
+    margin-top: 20px;
+    margin-left: 35px;
+    padding: 5px 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(179, 245, 245);
+}
+#student-add .item input:not(.btn){
+    text-indent: 2px;
+    border: 1px solid #0d9196;
+    border-radius: 4px;
+    height: 20px;
+}
+#student-add .item .btn:hover{
+    background-color: #12b0b6;
+}

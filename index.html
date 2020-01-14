@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的学生管理系统</title>
+    <link rel="icon" href="./images/cat.ico">
+    <link rel="stylesheet" href="./index.css">
+    <script src="./echarts.js"></script>
+</head>
+<body>
+
+
+
+    <!-- 头部信息 -->
+ <div class="header">
+     <div class="logo">
+         <img src="./images/logo.jpg" alt="加州理工大学">
+         <span class="jia">加</span>
+         <span class="zhou">州</span>
+         <span class="li">理</span>
+         <span class="gong">工</span>
+     </div>
+     <div class="btn">
+         <span></span>
+         <span></span>
+         <span></span>
+     </div>
+     <div class="drop-list">
+         <ul>
+             <li class="list-item student-list" data-id="student-list">学生列表</li>
+             <li class="list-item student-list" data-id="student-add">新增学生</li>
+             <li class="list-item student-list" data-id="student-echarts">统计图表</li>
+         </ul>
+     </div>
+     <div class="set">
+         <a href="./images/bianji.html"><img src="./images/gear.png"></a>
+     </div>
+ </div>
+
+
+
+
+
+
+
+ <!-- 左侧菜单栏 -->
+ <div class="left-menu">
+     <!-- 菜单列表 -->
+     <dl class="menu-list">
+         <dt>学生管理</dt>
+         <dd data-id="student-list" class="list-item student-list2 active">学生列表</dd>
+         <dd data-id="student-add" class="list-item student-add2">新增学生</dd>
+         <dd data-id="student-echarts" class="list-item student-echarts2">统计图表</dd>
+     </dl>
+ </div>
+
+
+
+
+
+
+ <!-- 右侧内容区域 -->
+ <div class="right-content">
+     <!-- 图标信息页 -->
+     <div class="student-echarts" id="student-echarts">
+        <div class="area"></div>
+        <div class="sex mySex"></div>
+    </div>
+     <!-- 学生信息列表页 -->
+     <div class="student-list content-active" id="student-list">
+         <!-- 搜索栏 -->
+            <div class="search-menu">
+                    <label for="op-list" class="an">筛选</label>
+                    <select>
+                            <option value="All">All</option>
+                            <option value ="boy">男</option>
+                            <option value="girl">女</option>
+                    </select>
+                    <input type="text" id="seachIpt">
+                    <button id="seach-btn">查找</button>
+                    <span class="pageNumber2"></span>
+                    <span class="pageNumber">
+                        <span>每页/条</span>
+                        <input type="text" id="pageNumberTarget" value="10">
+                        <button id="sure">确定</button>
+                    </span>
+                    <span class="search-page">
+                        <span>当前页</span>
+                        <span id="newPage" class="showsize">1</span>
+                        <button class="prvePage">上一页</button>
+                        <button class="nextPage">下一页</button>
+                        <span>总页数</span>
+                        <span id="allPage" class="showsize">1</span>
+                    </span>
+                </div>
+         <!-- 学生信息列表 -->
+         <table>
+                <thead>
+                        <tr>
+                          <th>学号</th>
+                          <th>姓名</th>
+                          <th>性别</th>
+                          <th>邮箱</th>
+                          <th>年龄</th>
+                          <th>手机号</th>
+                          <th>住址</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody id="table-body">
+                      </tbody>
+         </table>
+         <!-- 编辑学生信息列表 -->
+         <div class="modal">
+             <div class="mask"></div>
+             <div class="content">
+                 <h3>编辑表单</h3>
+                 <form class="student-edit-form">
+                     <div class="item">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name">
+                     </div>
+                     <div class="item">
+                         <label for="sex">性别</label>
+                         <input type="radio" name="sex" checked id="edit-male" value="0">
+                         <label for="edit-male" class="sex">男</label>
+                         <input type="radio" name="sex" id="edit-female" value="1">
+                         <label for="edit-female" class="sex">女</label>
+                     </div>
+                     <div class="item">
+                         <label for="email">邮箱</label>
+                         <input type="text" id="email">
+                     </div>
+                     <div class="item">
+                         <label for="number">学号</label>
+                         <input type="text" id="number">
+                     </div>
+                     <div class="item">
+                         <label for="birth">出生年</label>
+                         <input type="text" id="birth">
+                     </div>
+                     <div class="item">
+                         <label for="phone">手机</label>
+                         <input type="text" id="phone">
+                     </div>
+                     <div class="item">
+                         <label for="address">住址</label>
+                         <input type="text" id="address">
+                     </div>
+                     <div class="item">
+                         <label></label>
+                         <input class="btn" id="testbtn" type="submit" value="修改">
+                     </div>
+                     <span id="close"><img src="./images/close.png"></span>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <!-- 添加学生页 -->
+     <div class="student-add" id="student-add">
+         <form class="student-add-form">
+                <div class="item">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" class="ipt-add">
+                     </div>
+                     <div class="item">
+                         <label for="sex">性别</label>
+                         <input type="radio" name="sex" checked id="addedit-male" value="0">
+                         <label for="addedit-male" class="sex">男</label>
+                         <input type="radio" name="sex" id="addedit-female" value="1">
+                         <label for="addedit-female" class="sex">女</label>
+                     </div>
+                     <div class="item">
+                         <label for="email">邮箱</label>
+                         <input type="text" id="email" name="email" class="ipt-add">
+                     </div>
+                     <div class="item">
+                         <label for="number">学号</label>
+                         <input type="text" id="number" name="sNo" class="ipt-add">
+                     </div>
+                     <div class="item">
+                         <label for="birth">出生年</label>
+                         <input type="text" id="birth" name="birth" class="ipt-add">
+                     </div>
+                     <div class="item">
+                         <label for="phone">手机</label>
+                         <input type="text" id="phone" name="phone" class="ipt-add">
+                     </div>
+                     <div class="item">
+                         <label for="address">住址</label>
+                         <input type="text" id="address" name="address" class="ipt-add">
+                     </div>
+                     <div class="item">
+                         <label></label>
+                         <input class="btn" id="sutdent-add-submit" type="submit" value="添加">
+                         <input class="btn" type="submit" id="sutdent-add-succession" value="连续添加">
+                         <input class="btn" type="reset" value="清空">
+                     </div>
+         </form>
+     </div>
+ </div>
+
+ <script src="./jquery-3.1.1.min.js"></script>
+ <!-- <script src="./turnpage/index.js"></script> -->
+ <script src="./index.js"></script>
+ <script src="./pie.js"></script>
+ <script src="./maodian.js"></script>
+</body>
+</html>
